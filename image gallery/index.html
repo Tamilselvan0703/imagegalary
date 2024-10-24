@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncy image using GRID</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+    <fieldset>
+        <label style="--_img: url(https://telugustop.com/wp-content/uploads/2023/06/Thalapathy-Vijay-Leo-film.jpg)">
+            <input type="radio" name="images" value="TVK">
+        </label>
+        <label style="--_img: url(https://varnam.my/wp-content/uploads/2019/02/vijay-hd-photos-in-kaththi-5.jpg)">
+            <input type="radio" name="images" value="Kathi">
+        </label>
+        <label style="--_img: url(https://m.media-amazon.com/images/M/MV5BZWJlODhlMzctOTU0Yi00MTUwLTkxODYtMDNjNTQxYTI2YTE1XkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_FMjpg_UX1000_.jpg)" >
+            <input type="radio" name="images" value="Varisu">
+        </label>
+        <label style="--_img: url(https://i1.wp.com/godofindia.com/wp-content/uploads/2017/05/vijay-4-1.png)">
+            <input type="radio" name="images" value="Thupaki">
+        </label>
+        <label style="--_img: url(https://i.pinimg.com/originals/9a/e1/80/9ae1803f966fe6a7056c7b4bf33a0c5d.jpg)">
+            <input type="radio" name="images" value="Master">
+        </label>
+    </fieldset>
+
+</body>
+
+</html>
+</body>
+
+</html>
+<style>@import "https://unpkg.com/open-props" layer(design.system);
+
+    @layer demo {
+        fieldset {
+            grid-template-columns:
+                var(--col-1, 1fr) var(--col-2, 1fr) var(--col-3, 1fr) var(--col-4, 1fr) var(--col-5, 1fr);
+    
+            @media (prefers-reduced-motion: no-preference) {
+                transition: grid-template-columns 2s var(--ease-spring-5);
+            }
+    
+            &:has(label:nth-child(1) > input:checked) {
+                --col-1: 5fr;
+                --col-2: 3fr;
+            }
+    
+            &:has(label:nth-child(2) > input:checked){  
+    
+                --col-1: 2fr;
+                --col-2: 5fr;
+                --col-3: 2fr;
+            }
+    
+            &:has(label:nth-child(3) > input:checked) {
+                --col-2: 2fr;
+                --col-3: 5fr;
+                --col-4: 2fr;
+            }
+    
+            &:has(label:nth-child(4) > input:checked) {
+                --col-3: 2fr;
+                --col-4: 5fr;
+                --col-5: 2fr;
+            }
+    
+            &:has(label:nth-child(5) > input:checked) {
+                --col-4: 3fr;
+                --col-5: 5fr;
+            }
+    
+            >label {
+                background-image: var(--_img);
+                background-position: center;
+                background-size: auto 125%;
+            }
+        }
+    }
+    
+    @layer demo.support {
+        html {
+            background: #091634;
+            block-size: 100%;
+        }
+    
+        body {
+            min-block-size: 100%;
+            display: grid;
+            place-content: center;
+            padding: var(--size-5);
+            gap: var(--size-5);
+        }
+    
+        fieldset {
+            inline-size: 80vw;
+            display: grid;
+            grid-template-rows: 50vh;
+            gap: var(--size-3);
+            border: none;
+    
+            >label {
+                cursor: pointer;
+                border-radius: 45px;
+    
+                &:focus-within {
+                    outline: 1px solid #fff;
+                    outline-offset: 5px;
+                }
+    
+                >input {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    </style>
